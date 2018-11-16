@@ -17,6 +17,21 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+class TownStat(models.Model):
+    town_code = models.CharField(max_length=10, blank=True, null=True)
+    state = models.CharField(max_length=20, blank=True, null=True)
+    district = models.CharField(max_length=20, blank=True, null=True)
+    town = models.CharField(max_length=20, blank=True, null=True)
+    center_x = models.DecimalField(max_digits=65535, decimal_places=65535, blank=True, null=True)
+    center_y = models.DecimalField(max_digits=65535, decimal_places=65535, blank=True, null=True)
+    stddev_x = models.DecimalField(max_digits=65535, decimal_places=65535, blank=True, null=True)
+    stddev_y = models.DecimalField(max_digits=65535, decimal_places=65535, blank=True, null=True)
+    co_ef = models.FloatField(blank=True, null=True)
+
+    class Meta:
+        # managed = False
+        db_table = 'town_stat'
+
 # class Neighbors(models.Model):
 #     from_state = models.CharField(max_length=20)
 #     from_district = models.CharField(max_length=20)
